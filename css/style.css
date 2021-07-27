@@ -1,0 +1,96 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	background-color: rgb(2, 212, 212);
+	overflow: hidden;
+}
+
+.memory-game {
+	height: 640px;
+	width: 640px;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	perspective: 100%;
+}
+
+.card {
+	height: calc(33.333% - 10px);
+	width: calc(25% - 10px);
+	margin: 5px;
+	position: relative;
+	box-shadow: 1px 1px 1px rgba(1, 1, 1, 0.3);
+	cursor: pointer;
+	transform: scale(1);
+	transform-style: preserve-3d; /* não deixa o elemento achatado no plano */
+	transition: transform 0.9s;
+	user-select: none;
+}
+
+.card:active {
+	transform: scale(0.97);
+	transition: transform 0.3s;
+}
+
+.card-front,
+.card-back {
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	position: absolute;
+	border-radius: 5px;
+	background: #ffffff;
+	backface-visibility: hidden; /* retira o verso do elemento */
+}
+
+.card-front {
+	transform: rotateY(180deg);
+    background-size: 100% 100%;
+}
+
+.card-back {
+	background: url(../img/bandeira_de_minas.jpg);
+	background-size: 100% 100%;
+}
+
+.card[data-card="cana_de_acucar"] .card-front {
+	background: url(../img/cana_de_acucar.jpg);
+	background-size: 100% 100%;
+}
+
+.card[data-card="doce_de_leite"] .card-front {
+	background: url(../img/doce_de_leite.jpg);
+	background-size: 100% 100%;
+}
+
+.card[data-card="pao_de_queijo"] .card-front {
+	background: url(../img/pao_de_queijo.jpg);
+	background-size: 100% 100%;
+}
+
+.card[data-card="pastel_de_milho"] .card-front {
+	background: url(../img/pastel_de_milho.jpeg);
+    background-size: 100% 100%;
+}
+
+.card[data-card="queijo_minas"] .card-front {
+	background: url(../img/queijo_minas.png);
+	background-size: 100% 100%;
+}
+
+.card[data-card="cafe"] .card-front {
+	background: url(../img/cafe.jpg);
+	background-size: 100% 100%;
+}
+
+/* flip card animation */
+.card.flip {
+	transform: rotateY(180deg);
+}
